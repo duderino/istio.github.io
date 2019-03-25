@@ -1,20 +1,24 @@
 ---
 title: Istio 1.1.1
-publishdate: 2019-03-22
+publishdate: 2019-03-25
 icon: notes
 ---
 
-Istio 1.1.1 is the first in a weekly series of patch releases for Istio 1.1.  It contains a small number of bug fixes and minor enhancements.
+Istio 1.1.1 is the first in a series of patch releases for Istio 1.1, which we will create at least weekly assuming we have changes to share.
+
+This release includes security vulnerability fixes and improvements to robustness.
+
+This release note describes what's different between Istio 1.1.1 and Istio 1.0.
 
 {{< relnote_links >}}
 
 ## Bug fixes and minor enhancements
 
 - Configure Prometheus to monitor Citadel ([Issue 12175](https://github.com/istio/istio/pull/12175))
-- Improve output of [`istioctl verify-install`](/docs/reference/commands/istioctl/#istioctl-experimental-verify-install) command ([Issue 12174](https://github.com/istio/istio/pull/12174))
-- Reduce log level for missing service account for SPIFFE URI ([Issue 12108](https://github.com/istio/istio/issues/12108))
+- Improve output of [`istioctl experimental verify-install`](/docs/reference/commands/istioctl/#istioctl-experimental-verify-install) command ([Issue 12174](https://github.com/istio/istio/pull/12174))
+- Reduce log level for missing service account messages for a SPIFFE URI ([Issue 12108](https://github.com/istio/istio/issues/12108))
 - Fix broken path on the opt-in SDS feature's Unix domain socket ([Issue 12688](https://github.com/istio/istio/pull/12688))
-- Fix Envoy tracing: If parent span is propagated with empty string, it causes the next child span to not be created ([Envoy Issue 6263](https://github.com/envoyproxy/envoy/pull/6263))
+- Fix Envoy tracing that was preventing a child span from being created if the parent span was propagated with an empty string ([Envoy Issue 6263](https://github.com/envoyproxy/envoy/pull/6263))
 - Add namespace scoping to the Gateway 'port' names.  This fixes two issues:
     - `IngressGateway` only respects first port 443 Gateway definition ([Issue 11509](https://github.com/istio/istio/issues/11509))
     - Istio `IngressGateway` routing broken with two different gateways with same port name (SDS) ([Issue 12500](https://github.com/istio/istio/issues/12500))
